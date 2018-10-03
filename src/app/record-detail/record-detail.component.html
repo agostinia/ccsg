@@ -1,21 +1,24 @@
-<div *ngIf="record">
+<div class="container"  *ngIf="record" >
   <h2>Record Details</h2>
   <div><span>id: </span>{{record.id}}</div>
-  <div>
+  <div style="margin-top: 2ex">
     <label>F1:
-      <input [(ngModel)]="record.f1" placeholder="f1"/>
+      <input [(ngModel)]="record.f1" placeholder="f1" />
     </label>
   </div>
-  <div>
+  <div style="margin-top: 2ex">
     <label>F2:
       <input [(ngModel)]="record.f2" placeholder="f2"/>
     </label>
   </div>  
-  <div>
+  <div style="margin-top: 2ex">
     <label>F3:
       <input [(ngModel)]="record.f3" placeholder="f3"/>
     </label>
   </div>  
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
+  <div class="text-right" style="margin-top: 2ex">
+    <button (click)="goBack()" class="btn btn-secondary pull-right" style="margin-right:2ex">go back</button>
+    <button (click)="save()" class="btn btn-primary pull-right" >save</button>
+  </div>
+
 </div>

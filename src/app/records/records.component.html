@@ -1,65 +1,35 @@
 
 <div class="container">
-
-    <div class="row">
-        <div class="col-1">
-        </div>    
-        <div class="col-3">
-          F1    
-        </div>
-        <div class="col-3">
-          F2
-        </div>
-        <div class="col-3">
-          F3
-        </div>
-        <div class="col-2">
-        </div>
-      </div>
-
-  <div class="row">
-    <div class="col-1">
-    </div>    
-    <div class="col-3">
-        <input #f1 />
-    </div>
-    <div class="col-3">
-        <input #f2 />
-    </div>
-    <div class="col-3">
-        <input #f3 />
-    </div>
-    <div class="col-2">
-      <button (click)="add(f1.value,f2.value,f3.value); f1.value=''; f2.value=''; f3.value=''">
-        add
-      </button>
-    </div>
-  </div>
-
-  <div class="row" *ngFor="let record of records" >
-    <div class="col-1">
-        <a routerLink="/detail/{{record.id}}">
-          <span class="badge">{{record.id}}</span>
-        </a>
-    </div>
-    <div class="col-3">
-        <a routerLink="/detail/{{record.id}}">
-          {{record.f1}} 
-        </a>
-    </div>
-    <div class="col-3">
-        <a routerLink="/detail/{{record.id}}">
-          {{record.f2}} 
-        </a>
-    </div>
-    <div class="col-3">
-        <a routerLink="/detail/{{record.id}}">
-          {{record.f3}} 
-        </a>
-    </div>
-    <div class="col-2">
-        <button class="Xdelete" title="delete record"
-        (click)="delete(record)">delete</button>
-    </div>
-  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">F1</th>
+        <th scope="col">F2</th>
+        <th scope="col">F3</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td><input #f1 /></td>
+        <td><input #f2 /></td>
+        <td><input #f3 /></td>
+        <td><button type="button" class="btn btn-primary" (click)="add(f1.value,f2.value,f3.value); f1.value=''; f2.value=''; f3.value=''">Add</button></td>
+      </tr>
+      <tr *ngFor="let record of records">
+        <td>{{record.id}}</td>
+        <td>{{record.f1}}</td>
+        <td>{{record.f2}}</td>
+        <td>{{record.f3}}</td>
+        <td>
+          <a routerLink="/detail/{{record.id}}">
+            <button type="button" class="btn btn-primary">Edit</button>
+          </a>
+          <button type="button" class="btn btn-secondary" (click)="delete(record)" style="margin-left: 10px;">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
