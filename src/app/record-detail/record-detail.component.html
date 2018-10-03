@@ -1,0 +1,21 @@
+<div *ngIf="record">
+  <h2>Record Details</h2>
+  <div><span>id: </span>{{record.id}}</div>
+  <div>
+    <label>F1:
+      <input [(ngModel)]="record.f1" placeholder="f1"/>
+    </label>
+  </div>
+  <div>
+    <label>F2:
+      <input [(ngModel)]="record.f2" placeholder="f2"/>
+    </label>
+  </div>  
+  <div>
+    <label>F3:
+      <input [(ngModel)]="record.f3" placeholder="f3"/>
+    </label>
+  </div>  
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>
