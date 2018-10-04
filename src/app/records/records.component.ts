@@ -24,8 +24,8 @@ export class RecordsComponent implements OnInit {
 
   add(f1: string, f2: string, f3: string): void {
     this.recordService.addRecord({ f1: f1.trim(),f2: f2.trim(), f3: f3.trim()  } as Record)
-      .subscribe(hero => {
-        this.records.push(hero);
+      .subscribe(record => {
+        this.records.push(record);
       });
   }
 

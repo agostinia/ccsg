@@ -25,6 +25,7 @@ import { RecordDetailComponent } from './record-detail/record-detail.component';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),    
+
   ],
   declarations: [
     AppComponent,

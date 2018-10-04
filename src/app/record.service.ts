@@ -16,7 +16,8 @@ const httpOptions = {
 })
 export class RecordService {
 
-  private recordsUrl = 'api/records';  
+  private recordsUrl = 'api/record';  
+  //private recordsUrl = 'http:///localhost:9188/api/record';  
 
   constructor(
     private http: HttpClient,
@@ -25,19 +26,19 @@ export class RecordService {
     getRecords (): Observable<Record[]> {
       return this.http.get<Record[]>(this.recordsUrl)
         .pipe(
-          tap(heroes => this.log('fetched records')),
+          tap(records => this.log('fetched records')),
           catchError(this.handleError('getRecords', []))
         );
     }
     /** POST: add a new record to the server */
     addRecord (record: Record): Observable<Record> {
       return this.http.post<Record>(this.recordsUrl, record, httpOptions).pipe(
-        tap((record: Record) => this.log(`added hero w/ id=${record.id}`)),
+        tap((record: Record) => this.log(`added record w/ id=${record.id}`)),
         catchError(this.handleError<Record>('addRecord'))
       );
     }
 
-    /** GET hero by id. Return `undefined` when id not found */
+    /** GET record by id. Return `undefined` when id not found */
     getRecordNo404<Data>(id: number): Observable<Record> {
       const url = `${this.recordsUrl}/?id=${id}`;
       return this.http.get<Record[]>(url)
@@ -51,7 +52,7 @@ export class RecordService {
         );
     }
 
-    /** GET hero by id. Will 404 if id not found */
+    /** GET record by id. Will 404 if id not found */
     getRecord(id: number): Observable<Record> {
       const url = `${this.recordsUrl}/${id}`;
       return this.http.get<Record>(url).pipe(
@@ -73,8 +74,10 @@ export class RecordService {
     }
 
     /** PUT: update the record on the server */
-    updateHero (record: Record): Observable<any> {
-      return this.http.put(this.recordsUrl, record, httpOptions).pipe(
+    updateRecord (record: Record): Observable<any> {
+      const id = typeof record === 'number' ? record : record.id;
+      const url = `${this.recordsUrl}/${id}`;
+      return this.http.put(url, record, httpOptions).pipe(
         tap(_ => this.log(`updated record id=${record.id}`)),
         catchError(this.handleError<any>('updateRecord'))
       );
@@ -95,7 +98,7 @@ export class RecordService {
     }
 
     private log(message: string) {
-      //this.messageService.add(`HeroService: ${message}`);
+      //this.messageService.add(`RecordService: ${message}`);
     }
 
 

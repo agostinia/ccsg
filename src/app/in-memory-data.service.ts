@@ -3,7 +3,7 @@ import { Record } from './Model/record';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const records = [
+    const record = [
       { id: 11, f1: 'record1-f1', f2: 'record1-f2', f3: 'record1-f3' },
       { id: 12, f1: 'record2-f1', f2: 'record2-f2', f3: 'record2-f3'},
       { id: 13, f1: 'record3-f1', f2: 'record3-f2', f3: 'record3-f3' },
@@ -15,7 +15,7 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 19, f1: 'record9-f1', f2: 'record9-f2', f3: 'record9-f3'  },
       { id: 20, f1: 'record10-f1', f2: 'record10-f2', f3: 'record10-f3'  }
     ];
-    return {records};
+    return {record};
   }
 
   genId(records: Record[]): number {

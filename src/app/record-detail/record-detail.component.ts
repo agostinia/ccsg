@@ -15,7 +15,7 @@ export class RecordDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private heroService: RecordService,
+    private recordService: RecordService,
     private location: Location
   ) { }
 
@@ -25,8 +25,8 @@ export class RecordDetailComponent implements OnInit {
 
   getRecord(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getRecord(id)
-      .subscribe(hero => this.record = hero);
+    this.recordService.getRecord(id)
+      .subscribe(record => this.record = record);
   }
 
   goBack(): void {
@@ -34,7 +34,7 @@ export class RecordDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.heroService.updateHero(this.record)
+    this.recordService.updateRecord(this.record)
       .subscribe(() => this.goBack());
   }
   
